@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nab'han Rafif | Back-End Specialist</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Space+Grotesk:wght@600&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#00424e",
+                    "outline": "#958da1",
+                    "tertiary": "#ffb784",
+                    "tertiary-fixed": "#ffdcc6",
+                    "secondary-fixed": "#acedff",
+                    "inverse-surface": "#e8dfee",
+                    "on-primary": "#3f008e",
+                    "inverse-on-surface": "#332f39",
+                    "primary": "#d2bbff",
+                    "on-error": "#690005",
+                    "secondary": "#4cd7f6",
+                    "on-primary-fixed": "#25005a",
+                    "on-secondary": "#003640",
+                    "surface-container-lowest": "#100d16",
+                    "surface-container": "#221e28",
+                    "error-container": "#93000a",
+                    "on-primary-container": "#ede0ff",
+                    "on-tertiary-container": "#ffe0cd",
+                    "surface": "#15121b",
+                    "on-tertiary-fixed": "#301400",
+                    "on-secondary-fixed": "#001f26",
+                    "surface-container-highest": "#37333e",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "on-surface": "#e8dfee",
+                    "secondary-container": "#03b5d3",
+                    "background": "#0D1117",
+                    "surface-container-high": "#2c2833",
+                    "on-surface-variant": "#ccc3d8",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "surface-tint": "#d2bbff",
+                    "surface-dim": "#15121b",
+                    "outline-variant": "#4a4455",
+                    "surface-variant": "#37333e",
+                    "surface-bright": "#3c3742",
+                    "tertiary-container": "#a15100",
+                    "inverse-primary": "#732ee4",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#7c3aed",
+                    "primary-fixed-dim": "#d2bbff",
+                    "on-primary-fixed-variant": "#5a00c6",
+                    "surface-container-low": "#1d1a24",
+                    "on-background": "#e8dfee",
+                    "primary-fixed": "#eaddff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-tertiary": "#4f2500"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "container-max": "1200px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "section-gap": "120px"
+            },
+            "fontFamily": {
+                    "label-caps": ["SpaceGrotesk"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "code-snippet": ["JetBrainsMono"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Inter"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "code-snippet": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #0D1117; color: #e8dfee; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glow-hover:hover { box-shadow: 0 0 20px rgba(76, 215, 246, 0.4); }
+        .gradient-text { background: linear-gradient(90deg, #d2bbff, #4cd7f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-bg { background: linear-gradient(135deg, #7c3aed, #06b6d4); }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        .typing-effect {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #4cd7f6;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+            width: fit-content;
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #4cd7f6 }
+        }
+
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-body-md">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(210,187,255,0.15)]">
+<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+<a class="text-headline-md font-headline-md font-extrabold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent transition-transform hover:scale-105" href="#">
+                NAB'HAN RAFIF PRAFANTO
+            </a>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 hover:text-secondary transition-colors duration-300" href="#home">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300" href="#about">About</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300" href="#skills">Skills</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300" href="#projects">Projects</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-300" href="#contact">Contact</a>
+</nav>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-primary hover:scale-105 transition-transform cursor-pointer">terminal</span>
+<span class="material-symbols-outlined text-primary hover:scale-105 transition-transform cursor-pointer">code</span>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-24 overflow-hidden px-margin-mobile md:px-gutter" id="home">
+<canvas id="particle-canvas"></canvas>
+<div class="relative z-10 max-w-container-max mx-auto w-full">
+<div class="max-w-3xl">
+<h1 class="font-headline-xl text-headline-xl mb-6">
+<span class="typing-effect gradient-text">I build simple yet elegant web experiences.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">
+                        Crafting robust back-end systems with modern aesthetics. Architecture that scales, code that inspires.
+                    </p>
+<div class="flex flex-wrap gap-6">
+<a class="gradient-bg text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition-transform shadow-[0_0_20px_rgba(124,58,237,0.3)]" href="#projects">
+                            View My Work
+                        </a>
+<a class="glass px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-all border border-secondary/30 text-secondary" href="#contact">
+                            Get In Touch
+                        </a>
+</div>
+</div>
+</div>
+</section>
+<!-- About Me Section -->
+<section class="py-section-gap px-margin-mobile md:px-gutter max-w-container-max mx-auto" id="about">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="relative group">
+<div class="absolute -inset-4 bg-gradient-to-tr from-primary to-secondary opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-500"></div>
+<div class="relative rounded-2xl overflow-hidden aspect-square border border-white/10 glass">
+<img class="w-full h-full object-cover" data-alt="A professional and sleek portrait of a young male software developer with a focused expression, set against a dark, minimalist laboratory background with subtle glowing blue computer screens in the distance. The lighting is cinematic, featuring soft rim lights in purple and cyan that match a modern dark-mode aesthetic. The style is clean, high-fidelity, and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4iv2VQGO99WhguUR8NrpD5XlkRjJql9YyD9H4Tc4PygWmK4wp205boNezeUH050wAa5rDZV5i_vChxoJ6SF2rbro-zQiMiMQlgyubseT44rj8A5EJXaZtTBYXeO06HkXMfaAMVT-HUcOnsNLwOYiX5noDwy9QsGZMLK9pQayfbZNPDQsI447iGUQF3PgT0aqwU_LXuKkJe50tFTMj00zDepP-sJWigAoMhWqrQKgLCrWRUaE6BCqSlxsg53zMa_Tu_GY4Zt8foSI"/>
+</div>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-8">Architecting the <span class="gradient-text">Invisible</span></h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6 leading-relaxed">
+                        I am Nab'han Rafif Prafanto, a developer driven by the intricate dance of server-side logic and database optimization. My passion lies in creating systems that are not just functional, but elegantly performant.
+                    </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                        With a focus on back-end stability and modern aesthetic integration, I bridge the gap between complex infrastructure and seamless user experiences. I believe clean code is the foundation of digital longevity.
+                    </p>
+<div class="flex gap-12">
+<div>
+<div class="text-headline-md font-headline-md text-secondary">5+</div>
+<div class="text-label-caps font-label-caps text-outline uppercase tracking-wider">Years Experience</div>
+</div>
+<div>
+<div class="text-headline-md font-headline-md text-primary">50+</div>
+<div class="text-label-caps font-label-caps text-outline uppercase tracking-wider">Deployments</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="py-section-gap px-margin-mobile md:px-gutter bg-surface-container/30" id="skills">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg mb-4">Technical <span class="gradient-text">Mastery</span></h2>
+<p class="font-body-md text-body-md text-on-surface-variant">The tools I use to build the future of the web.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+<!-- Skill Progress Bars -->
+<div class="space-y-8">
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-label-caps">HTML &amp; SEO</span>
+<span class="font-label-caps text-label-caps text-secondary">95%</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full gradient-bg w-[95%] relative overflow-hidden">
+<div class="absolute inset-0 bg-white/20 translate-x-[-100%] animate-[shimmer_2s_infinite]"></div>
+</div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-label-caps">CSS &amp; TAILWIND</span>
+<span class="font-label-caps text-label-caps text-secondary">90%</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full gradient-bg w-[90%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-label-caps">JAVASCRIPT / NODE</span>
+<span class="font-label-caps text-label-caps text-secondary">92%</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full gradient-bg w-[92%]"></div>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-label-caps">REACT &amp; VUE</span>
+<span class="font-label-caps text-label-caps text-secondary">88%</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full gradient-bg w-[88%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-label-caps">PYTHON / DJANGO</span>
+<span class="font-label-caps text-label-caps text-secondary">85%</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full gradient-bg w-[85%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-label-caps">POSTGRESQL &amp; REDIS</span>
+<span class="font-label-caps text-label-caps text-secondary">90%</span>
+</div>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full gradient-bg w-[90%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Grid -->
+<section class="py-section-gap px-margin-mobile md:px-gutter max-w-container-max mx-auto" id="projects">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-4">Featured <span class="gradient-text">Work</span></h2>
+<p class="font-body-md text-body-md text-on-surface-variant">A collection of systems architected for performance.</p>
+</div>
+<button class="glass px-6 py-2 rounded-full font-label-caps text-label-caps text-secondary hover:bg-secondary hover:text-on-secondary transition-all">View Archive</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+<!-- Project Card 1 -->
+<div class="glass p-6 rounded-3xl group hover:scale-[1.02] transition-all duration-500 cursor-pointer">
+<div class="relative rounded-2xl overflow-hidden h-64 mb-6">
+<img class="w-full h-full object-cover" data-alt="A futuristic web dashboard interface showing real-time data visualization with glowing purple and neon blue charts. The aesthetic is clean and glassmorphic, set against a dark background that suggests a high-end back-end monitoring system. Digital nodes and data streams are subtly integrated into the composition to emphasize back-end architecture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwZwsxyVgv6xGllTdgvSUu5SxDMpm7IKywiAHZUnIu99qM8V_HqnhKt5RAm6uWxYbphP0WMH0VjKJ1pR2L4YkNXsHAFMpsPXq7L_GL-tFGbgfaJ9Llc_y-u4-ErcJYarwQf3F6dLzYN8gAHJ5tdkRXwS80RuemD9SyMuPWWyMVibidihwCziNr7d4iKfqPOKnGpfN6Vr6VtVoyvSi-4Rz5JJbQ2ga9mucYoj6521YmINGQ-KwUTwRjkHzMMK3AQjGGvSq23YEQTj4"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-white">open_in_new</span>
+</div>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 rounded-full glass border-primary/20 text-[10px] font-label-caps text-primary">NODE.JS</span>
+<span class="px-3 py-1 rounded-full glass border-primary/20 text-[10px] font-label-caps text-primary">REDIS</span>
+<span class="px-3 py-1 rounded-full glass border-primary/20 text-[10px] font-label-caps text-primary">DOCKER</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">Nebula Data Stream</h3>
+<p class="text-on-surface-variant font-body-md mb-6">Real-time processing engine for massive IoT sensor data with millisecond latency.</p>
+<a class="flex items-center gap-2 text-secondary font-bold hover:gap-4 transition-all" href="#">
+                        GitHub Repo <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<!-- Project Card 2 -->
+<div class="glass p-6 rounded-3xl group hover:scale-[1.02] transition-all duration-500 cursor-pointer">
+<div class="relative rounded-2xl overflow-hidden h-64 mb-6">
+<img class="w-full h-full object-cover" data-alt="A sophisticated representation of a secure blockchain infrastructure. Metallic geometric structures are connected by glowing energy lines in a dark space, with a cool palette of cyan and deep indigo. The style is abstract and architectural, conveying security, stability, and advanced cryptography for a back-end focused portfolio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTb4sx9kmIoOwqMHAKinxUZ9nvpbj9yyvSnFA8faOS2WH4tWIntd6DDU5hOYPrlfl9U9dMojC-IHX64aOiChzj2wWheTwv1nHdKYMWVHod2MrFu5wNnWjdGk_OPHjQhVhPSy4MHvAmlkTJ3Vn38GC3eXgh71NOs7vsQwBXx-yuDZPU_AqQvLnI3q6EP6QO2Dsl1zWufvodGIZ3ND70QWS4SkBVAtqh-jwSREz_6W9pUuLlFb89s7mt8_wo0JT1OO6OpkMY6Xedf88"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-white">open_in_new</span>
+</div>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 rounded-full glass border-primary/20 text-[10px] font-label-caps text-primary">PYTHON</span>
+<span class="px-3 py-1 rounded-full glass border-primary/20 text-[10px] font-label-caps text-primary">POSTGRES</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">CryptoVault Core</h3>
+<p class="text-on-surface-variant font-body-md mb-6">Ultra-secure transaction ledger with automated auditing and anomaly detection.</p>
+<a class="flex items-center gap-2 text-secondary font-bold hover:gap-4 transition-all" href="#">
+                        GitHub Repo <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<!-- Project Card 3 -->
+<div class="glass p-6 rounded-3xl group hover:scale-[1.02] transition-all duration-500 cursor-pointer">
+<div class="relative rounded-2xl overflow-hidden h-64 mb-6">
+<img class="w-full h-full object-cover" data-alt="A macro visualization of a neural network or complex algorithm structure. Luminous connections weave through a dark void, with sparks of light at the intersections. The color scheme is a sophisticated blend of violet and deep space black, styled like high-end 3D abstract art to represent advanced software logic and AI integration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgVPqVkDKckOCfM-j5CAPap3OXcPcfQLO5wp5iyDt8dVLsEcWls86gsHfVVDf1X8Nr3v_N7UP1v5IBQc2oMsAWCE8np5F8ytodHbj7iBthtIcrqfKrvbmGqnUnoIQutqK5yP1xiA2fYsDSPksra2S_gMRZ-la7HF6E4YWsUfujWqf4O4hbLu0XF4ttUJ8vrsZNdPWjfRoXGDbaFInLq-mZ8N6el62vAGw_gb0IIUyo0PfrFz7I-lHlEucgATvUIb7ei5ix-ObUmvE"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-white">open_in_new</span>
+</div>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 rounded-full glass border-primary/20 text-[10px] font-label-caps text-primary">DJANGO</span>
+<span class="px-3 py-1 rounded-full glass border-primary/20 text-[10px] font-label-caps text-primary">AWS</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">OmniScale Auth</h3>
+<p class="text-on-surface-variant font-body-md mb-6">Scalable OAuth2 provider handling 1M+ concurrent sessions with zero downtime.</p>
+<a class="flex items-center gap-2 text-secondary font-bold hover:gap-4 transition-all" href="#">
+                        GitHub Repo <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<!-- Project Card 4 -->
+<div class="glass p-6 rounded-3xl group hover:scale-[1.02] transition-all duration-500 cursor-pointer">
+<div class="relative rounded-2xl overflow-hidden h-64 mb-6">
+<img class="w-full h-full object-cover" data-alt="A clean and modern representation of server clusters or cloud computing architecture. Minimalist white blocks are stacked in a dark, atmospheric room with cyan accent lights and soft shadows. The overall image reflects high-tech precision, cleanliness, and the structural integrity of professional server-side development." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTxtJHb2HzajHgN0tkqwecmrtsXVSk_nFsuzF3_5zI5WXCvDDG7s94jNH2TEmXZ-lQS-0MiQOENYwLRX8Gz4i45nkE5eXdZBX4R_adOfmXUpbtmObnPIUI6QWgm_4LIKkwAfnAQpfRvux_SI-IYvHJxGS9KQCid2FbJg5OT8WWAffv8Cj2_kyerJqV34gF_rDkyuWO08U1DutpdbbcKP627RY6JSjMHAApwdzgU_PEPGzCDljtzXDLM-ZJP7_568ZOO9GNTDm4FYQ"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-white">open_in_new</span>
+</div>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 rounded-full glass border-primary/20 text-[10px] font-label-caps text-primary">GOLANG</span>
+<span class="px-3 py-1 rounded-full glass border-primary/20 text-[10px] font-label-caps text-primary">ELASTIC</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3">SwiftSearch Engine</h3>
+<p class="text-on-surface-variant font-body-md mb-6">Distributed search indexing system capable of querying terabytes of log data in seconds.</p>
+<a class="flex items-center gap-2 text-secondary font-bold hover:gap-4 transition-all" href="#">
+                        GitHub Repo <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Experience Timeline -->
+<section class="py-section-gap px-margin-mobile md:px-gutter bg-surface-container-lowest/50">
+<div class="max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg mb-16 text-center">Professional <span class="gradient-text">Trajectory</span></h2>
+<div class="relative">
+<!-- Vertical Line -->
+<div class="absolute left-1/2 -translate-x-1/2 h-full w-[2px] bg-gradient-to-b from-primary to-transparent"></div>
+<div class="space-y-24 relative">
+<!-- Node 1 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="flex-1 md:text-right md:pr-12">
+<h3 class="font-headline-md text-headline-md text-primary">Senior Back-end Engineer</h3>
+<p class="text-on-surface-variant font-body-md mt-2">TechFlow Solutions • 2022 - Present</p>
+<p class="mt-4 text-on-surface-variant/80">Leading a team of 5 developers to overhaul legacy microservices architecture.</p>
+</div>
+<div class="w-12 h-12 rounded-full gradient-bg z-10 flex items-center justify-center shadow-[0_0_15px_rgba(76,215,246,0.6)]">
+<span class="material-symbols-outlined text-white text-sm">rocket_launch</span>
+</div>
+<div class="flex-1 md:pl-12"></div>
+</div>
+<!-- Node 2 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="flex-1"></div>
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border border-primary/50 z-10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">code</span>
+</div>
+<div class="flex-1 md:pl-12">
+<h3 class="font-headline-md text-headline-md text-secondary">Full Stack Developer</h3>
+<p class="text-on-surface-variant font-body-md mt-2">Creative Pulse • 2020 - 2022</p>
+<p class="mt-4 text-on-surface-variant/80">Built scalable APIs for high-traffic e-commerce platforms.</p>
+</div>
+</div>
+<!-- Node 3 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="flex-1 md:text-right md:pr-12">
+<h3 class="font-headline-md text-headline-md text-on-surface">Junior Web Developer</h3>
+<p class="text-on-surface-variant font-body-md mt-2">StartUp Haven • 2018 - 2020</p>
+<p class="mt-4 text-on-surface-variant/80">Initial focus on database optimization and front-end integration.</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border border-white/20 z-10 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">history_edu</span>
+</div>
+<div class="flex-1 md:pl-12"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Carousel -->
+<section class="py-section-gap px-margin-mobile md:px-gutter overflow-hidden">
+<div class="max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg mb-16 text-center">Industry <span class="gradient-text">Voices</span></h2>
+<div class="flex gap-8 cursor-grab active:cursor-grabbing transition-transform duration-500 overflow-x-auto pb-8 snap-x no-scrollbar" id="testimonial-container">
+<div class="min-w-[320px] md:min-w-[450px] glass p-8 rounded-3xl snap-center">
+<div class="text-secondary mb-6"><span class="material-symbols-outlined scale-150">format_quote</span></div>
+<p class="font-body-lg text-body-lg mb-8 italic">"Nab'han's approach to API design is nothing short of artistic. He reduced our server response time by 60% within the first month."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">SC</div>
+<div>
+<h4 class="font-bold">Sarah Chen</h4>
+<p class="text-label-caps text-label-caps text-outline">CTO, DataNexus</p>
+</div>
+</div>
+</div>
+<div class="min-w-[320px] md:min-w-[450px] glass p-8 rounded-3xl snap-center">
+<div class="text-secondary mb-6"><span class="material-symbols-outlined scale-150">format_quote</span></div>
+<p class="font-body-lg text-body-lg mb-8 italic">"Reliable, communicative, and technically superior. The back-end he built for us has handled our growth without a single crash."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary">MK</div>
+<div>
+<h4 class="font-bold">Marcus King</h4>
+<p class="text-label-caps text-label-caps text-outline">Founder, FinStream</p>
+</div>
+</div>
+</div>
+<div class="min-w-[320px] md:min-w-[450px] glass p-8 rounded-3xl snap-center">
+<div class="text-secondary mb-6"><span class="material-symbols-outlined scale-150">format_quote</span></div>
+<p class="font-body-lg text-body-lg mb-8 italic">"A rare developer who understands both the complexity of the back-end and the necessity of a clean user flow."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary/20 flex items-center justify-center font-bold text-tertiary">JL</div>
+<div>
+<h4 class="font-bold">Jessica Lee</h4>
+<p class="text-label-caps text-label-caps text-outline">Product Lead, CloudSync</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Form -->
+<section class="py-section-gap px-margin-mobile md:px-gutter bg-gradient-to-b from-transparent to-surface-container-lowest" id="contact">
+<div class="max-w-4xl mx-auto glass p-8 md:p-16 rounded-[40px]">
+<div class="text-center mb-12">
+<h2 class="font-headline-lg text-headline-lg mb-4">Start a <span class="gradient-text">Conversation</span></h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Available for consulting and high-impact partnerships.</p>
+</div>
+<form class="space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="relative group">
+<input class="peer w-full bg-transparent border-b border-white/20 py-3 px-0 focus:outline-none focus:border-secondary transition-all placeholder-transparent" id="name" placeholder="Name" type="text"/>
+<label class="absolute left-0 top-3 text-on-surface-variant font-body-md transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-secondary" for="name">Full Name</label>
+</div>
+<div class="relative group">
+<input class="peer w-full bg-transparent border-b border-white/20 py-3 px-0 focus:outline-none focus:border-secondary transition-all placeholder-transparent" id="email" placeholder="Email" type="email"/>
+<label class="absolute left-0 top-3 text-on-surface-variant font-body-md transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-secondary" for="email">Email Address</label>
+</div>
+</div>
+<div class="relative group">
+<textarea class="peer w-full bg-transparent border-b border-white/20 py-3 px-0 focus:outline-none focus:border-secondary transition-all placeholder-transparent resize-none" id="message" placeholder="Message" rows="4"></textarea>
+<label class="absolute left-0 top-3 text-on-surface-variant font-body-md transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-secondary" for="message">Your Message</label>
+</div>
+<div class="pt-4 flex justify-center">
+<button class="gradient-bg text-white px-12 py-4 rounded-xl font-bold glow-hover transition-all transform hover:-translate-y-1" type="submit">
+                            Send Transmission
+                        </button>
+</div>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap border-t border-outline-variant/20 bg-surface dark:bg-surface">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-gutter max-w-container-max mx-auto gap-8">
+<div>
+<p class="font-label-caps text-label-caps tracking-widest text-outline uppercase mb-2">NAB'HAN RAFIF PRAFANTO</p>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 Nab'han Rafif Prafanto. Built with precision.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-all hover:translate-y-[-2px]" href="#">Architecture</a>
+<a class="text-on-surface-variant hover:text-primary transition-all hover:translate-y-[-2px]" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary transition-all hover:translate-y-[-2px]" href="#">Status</a>
+</div>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-primary/20 transition-all text-secondary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">hub</span>
+</a>
+<a class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-primary/20 transition-all text-secondary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+</a>
+<a class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-primary/20 transition-all text-secondary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">movie</span>
+</a>
+<a class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-primary/20 transition-all text-secondary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Particle Animation
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                else if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(210, 187, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function createParticles() {
+            particles = [];
+            for (let i = 0; i < 80; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            initCanvas();
+            createParticles();
+        });
+
+        initCanvas();
+        createParticles();
+        animate();
+
+        // Intersection Observer for Progress Bars
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bars = entry.target.querySelectorAll('.h-full');
+                    bars.forEach(bar => {
+                        bar.style.width = bar.dataset.width || bar.style.width;
+                    });
+                }
+            });
+        }, observerOptions);
+
+        const skillsSection = document.querySelector('#skills');
+        if (skillsSection) observer.observe(skillsSection);
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>
